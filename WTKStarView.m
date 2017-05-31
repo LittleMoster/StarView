@@ -169,6 +169,8 @@
     }
     
 }
+
+
 ///移动
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
@@ -208,6 +210,7 @@
                     if(flag == 0 && self.starBlock)
                     {
                         self.starBlock([NSString stringWithFormat:@"%.1f",i + value]);
+                            [self.delegate GetStareNum:star];
                     }
                     flag++;
                 }
@@ -224,6 +227,8 @@
         {
             //       没有调用block，当前点击不在星星上
             self.starBlock([NSString stringWithFormat:@"%.1f",star]);
+            
+            [self.delegate GetStareNum:star];
         }
     }
     
@@ -254,16 +259,12 @@
     if (self.starBlock)
     {
         self.starBlock([NSString stringWithFormat:@"%ld",star]);
+        
+            [self.delegate GetStareNum:star];
     }
 }
 
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+
 
 @end

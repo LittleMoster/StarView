@@ -8,17 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+
 typedef NS_ENUM(NSInteger, WTKStarType) {
 ///整数
     WTKStarTypeInteger = 0,
 ///允许浮点(半颗星)
     WTKStarTypeFloat,
 };
+@protocol WTKStarViewDeleagte <NSObject>
 
+-(void)GetStareNum:(CGFloat)num;
+
+@end
 @interface WTKStarView : UIView
 
 ///回调
 @property(nonatomic,copy)void(^starBlock)(NSString *value);
+
 
 ///星级 0-5(默认5)
 @property(nonatomic,assign)CGFloat star;
@@ -26,6 +32,9 @@ typedef NS_ENUM(NSInteger, WTKStarType) {
 ///是否允许触摸改变星级   默认YES
 @property(nonatomic,assign)BOOL isTouch;
 
+@property(nonatomic,assign)id<WTKStarViewDeleagte>delegate;
+
+//-(void)getStareNum:(void(^)(NSString *value))starNum;
 ///类型（整形或者浮点型）
 //@property(nonatomic,assign)WTKStarType      starType;
 
